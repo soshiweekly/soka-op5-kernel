@@ -1552,6 +1552,9 @@ struct sched_rt_entity {
 	/* rq "owned" by this entity/group: */
 	struct rt_rq		*my_q;
 #endif
+
+	/* CPU-bound kernel thread */
+	bool kthread_per_cpu;
 };
 
 struct sched_dl_entity {
@@ -2131,6 +2134,8 @@ struct task_struct {
 	unsigned long	task_state_change;
 #endif
 	int pagefault_disabled;
+	/* CPU-bound kernel thread */
+	bool kthread_per_cpu;
 /* CPU-specific state of this task */
 	struct thread_struct thread;
 /*
